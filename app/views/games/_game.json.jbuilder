@@ -1,0 +1,1 @@
+json.extract! game, :id, :name, :label, :description, :wikipedia_query, :created_at

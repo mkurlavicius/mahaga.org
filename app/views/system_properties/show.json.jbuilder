@@ -1,0 +1,1 @@
+json.partial! 'system_properties', system_properties: @system_properties

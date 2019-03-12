@@ -1,0 +1,1 @@
+json.extract! system_properties, :id, :main_name, :main_caption, :main_description, :updated_at, :created_at
