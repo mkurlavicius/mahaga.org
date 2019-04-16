@@ -16,7 +16,9 @@ class MovesController < ApplicationController
   # GET /games/{game_id}/matches/{match_id}/moves/1.json
   def show
     respond_to do |format|
-      format.json()
+      format.json do
+        render :show, {:game => @game, :match => @match, :move => @move }
+      end
     end
   end
   

@@ -1,10 +1,14 @@
 development:
-  adapter: async
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/gamebase/development" } %>
+  channel_prefix: gamebase
 
 test:
-  adapter: async
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/gamebase/test" } %>
+  channel_prefix: gamebase
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: gamebase_production
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/gamebase/production" } %>
+  channel_prefix: gamebase

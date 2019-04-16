@@ -1,16 +1,16 @@
-// React 
-import React                       from "react"
-import { BrowserRouter as Router } from "react-router-dom"
+// // React 
+// import React                       from "react"
+// import { BrowserRouter as Router } from "react-router-dom"
 
-// Material 
-// App 
+// // Material 
+// // App 
 
-class LoadingPage extends React.Component {
-  render () {
-    return(
-      "Loading..."
-    )
-  }
-}
+// class LoadingPage extends React.Component {
+//   render () {
+//     return(
+//       "Loading..."
+//     )
+//   }
+// }
 
-export default LoadingPage
+// export default LoadingPage

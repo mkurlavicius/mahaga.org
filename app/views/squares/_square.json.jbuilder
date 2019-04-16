@@ -1,0 +1,1 @@
+json.extract! square, :id, :x, :y, :status, :winning, :match_id, :type, :label, :disabled

@@ -1,25 +1,19 @@
 import React          from 'react';
 import Grid           from '@material-ui/core/Grid';
-import GameCard       from './GameCard'
+import GameCard       from './GameCard';
+import { connect }    from 'react-redux';
+import { getGames }   from '../actions/gameActions';
+import PropTypes      from 'prop-types'
 
 class GameCards extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { 
-      gameBase: this.props.gameBase
-    }
-  }
 
   componentDidMount() {
-    fetch('http://localhost:3000/games.json', {mode: 'no-cors'})
-      .then(res  => { return res.json(); })
-      .then(data => {
-        this.setState({ games: data })
-      })
+    this.props.getGames();
   }
 
   render() {
-    const { games } = this.state
+    const { games } = this.props
+    console.log(games)
     return(
       <React.Fragment>
         {games ? (games.map((game, index) => ( 
@@ -34,5 +28,15 @@ class GameCards extends React.Component {
   }
 }
 
-export default GameCards;
+GameCards.propTypes = {
+  gameBase: PropTypes.object.isRequired,
+  getGames: PropTypes.func.isRequired,
+  games:    PropTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+  games: state.games.items
+});
+
+export default connect(mapStateToProps, { getGames })(GameCards);
 

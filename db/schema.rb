@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_01_154232) do
+ActiveRecord::Schema.define(version: 2019_04_08_163527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_03_01_154232) do
     t.string "label"
     t.string "wikipedia_query"
     t.bigint "system_properties_id"
+    t.json "settings"
     t.index ["system_properties_id"], name: "index_games_on_system_properties_id"
   end
 

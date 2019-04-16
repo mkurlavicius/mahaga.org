@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import { fade } from '@material-ui/core/styles/colorManipulator';
-import { withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import { Link, NavLink } from 'react-router-dom'
+import React              from 'react';
+import PropTypes          from 'prop-types';
+import AppBar             from '@material-ui/core/AppBar';
+import Toolbar            from '@material-ui/core/Toolbar';
+import IconButton         from '@material-ui/core/IconButton';
+import Typography         from '@material-ui/core/Typography';
+import InputBase          from '@material-ui/core/InputBase';
+import Badge              from '@material-ui/core/Badge';
+import MenuItem           from '@material-ui/core/MenuItem';
+import Menu               from '@material-ui/core/Menu';
+import { fade }           from '@material-ui/core/styles/colorManipulator';
+import { withStyles }     from '@material-ui/core/styles';
+import MenuIcon           from '@material-ui/icons/Menu';
+import SearchIcon         from '@material-ui/icons/Search';
+import AccountCircle      from '@material-ui/icons/AccountCircle';
+import MailIcon           from '@material-ui/icons/Mail';
+import NotificationsIcon  from '@material-ui/icons/Notifications';
+import MoreIcon           from '@material-ui/icons/MoreVert';
+import { NavLink }        from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -89,10 +89,13 @@ const styles = theme => ({
 });
 
 class TopBar extends React.Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      anchorEl: null,
+      mobileMoreAnchorEl: null
+    }
+  }
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -223,9 +226,5 @@ class TopBar extends React.Component {
     );
   }
 }
-
-TopBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(TopBar);

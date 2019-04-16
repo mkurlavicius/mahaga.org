@@ -16,6 +16,7 @@ import ShareIcon      from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon   from '@material-ui/icons/MoreVert';
 import Grid           from '@material-ui/core/Grid'
+import { getDate }    from './Utils';
 
 import { BrowserRouter as Router, Link} from 'react-router-dom'
 
@@ -69,14 +70,6 @@ class GameCard extends React.Component {
   //     })
   // }
 
-  gameCreatedAt() {
-    return Intl.DateTimeFormat('en-GB', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }).format(new Date(this.props.game.createdAt))
-  }
-
   render() {
     // const { wikipage } = this.props
     // console.debug(wikipage)
@@ -98,7 +91,7 @@ class GameCard extends React.Component {
           }
           title={game.label}
           // title="Shrimp and Chorizo Paella"
-          subheader={this.gameCreatedAt()}
+          subheader={getDate(this.state.game, "createdAt")}
         />
         <Link to={`/games/${game.id}.html`}>
           {/* <CardMedia

@@ -45,7 +45,6 @@ module TicTacToe
     end
     
     def resolve
-      # byebug
       self.match.update_board
       case
       when self.match.try("#{player}_won?")

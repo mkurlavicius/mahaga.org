@@ -45,6 +45,7 @@ gem 'therubyracer'
 
 gem 'webpacker'
 gem 'react-rails'
+gem 'redis-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

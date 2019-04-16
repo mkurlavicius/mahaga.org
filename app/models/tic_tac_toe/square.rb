@@ -37,6 +37,14 @@ module TicTacToe
     def player
       Player.try(self.status)
     end
+    
+    def label
+      self.to_s
+    end
+
+    def disabled
+      match.finished? || !status_nobody?
+    end
   
     def to_coordinate
       Coordinate.new(self)

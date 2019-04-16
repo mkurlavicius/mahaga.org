@@ -1,85 +1,55 @@
-import React          from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import red            from '@material-ui/core/colors/red';
-import Grid           from '@material-ui/core/Grid'
-import GameCard       from './GameCard'
+// React
+import React from 'react';
 
-const styles = theme => ({
-  card: {
-    maxWidth: 400,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  actions: {
-    display: 'flex',
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-});
+// Material-UI
+import Grid           from '@material-ui/core/Grid';
+
+// App
+import Matches   from './Matches';
+import MatchForm from './MatchForm'; 
+
+import { connect }    from 'react-redux';
+import { getMatches } from '../actions/matchActions';
+
+import PropTypes      from 'prop-types'
 
 class Game extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      wikiToken: '45abdee7fa53757f67eb592313e8cdfc36d7442',
-      expanded: false,
-      game: {
-        label: "Game Label",
-        name: "GameName",
-        description: "Lorem ipsum",
-        createdAt: "2019-03-02 13:23:51 UTC"
-      },
-      matchData: this.props.matchData
-    }
-  }
-
-  handleExpandClick = () => {
-    this.setState(state => ({ expanded: !state.expanded }));
-  };
 
   componentDidMount() {
-    const { matchData } = this.state
-    console.log(matchData)
-
-    fetch(`http://localhost:3000/games/${matchData.match.params.gameId}.json`, {mode: 'no-cors'})
-      .then(res  => { return res.json(); })
-      .then(data => {
-        this.setState({ game: data })
-      })
-  }
-
-  gameCreatedAt() {
-    return Intl.DateTimeFormat('en-GB', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }).format(new Date(this.state.game.createdAt))
+    this.props.getMatches(this.props.matchData.match.params.gameId);
   }
 
   render() {
-    // const { wikipage } = this.props
-    // console.debug(wikipage)
-    const { game } = this.state
+    const { game, matches, matchData, gameBase } = this.props;
+    console.log("Renderinam Game.js")
+    console.log(game, matches, matchData, gameBase)
+    console.log("------------------")
 
     return(
-      <Grid item key={game} xs={12} sm={12} sm={12} md={12} lg={12}>
-        <GameCard key={game.id} game={game}/>
+      <Grid container>
+        <Grid item key={`match`} xs={12} sm={12} sm={12} md={6} lg={6}>
+          { this.props.game.settings ? (<MatchForm game={this.props.game} gameBase={gameBase} matchData={matchData}/>) : (<div>Loading...</div>) }
+        </Grid>
+
+        <Grid item key={`matches`} xs={12} sm={12} sm={12} md={6} lg={6}>
+          { this.props.matches ? (<Matches game={game} matchData={matchData} matches={matches} gameBase={gameBase} matchData={matchData}/>) : (<div>Loading...</div>) }
+        </Grid>
       </Grid>
     );
   }
 }
 
-export default withStyles(styles)(Game);
+// Game.propTypes = {
+//   matchData:  PropTypes.object,
+//   getMatches: PropTypes.func.isRequired,
+//   gameBase:   PropTypes.object.isRequired,
+//   matches:    PropTypes.array,
+//   game:       PropTypes.object.isRequired
+// }
+
+const mapStateToProps = state => ({
+  game: state.games.item,
+  matches: state.matches.items
+});
+
+export default connect(mapStateToProps, { getMatches })(Game); 
