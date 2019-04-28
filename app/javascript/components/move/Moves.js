@@ -7,8 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import MovesCard from './MovesCard';
-import { getDate } from './Utils'
+import { getDate } from '../Utils'
 
 const styles = theme => ({
   root: {
@@ -17,7 +16,8 @@ const styles = theme => ({
     overflowX: 'auto',
   },
   table: {
-    minWidth: 700,
+    // minWidth: 700,
+    maxHeight: 200
   },
 });
 
@@ -27,13 +27,11 @@ class Moves extends React.Component {
     const { classes, moves } = this.props;
     if(classes && moves) {
       return(
-          <Table className={classes.table}>
+          <Table padding="dense" className={classes.table}>
             <TableHead>
               <TableRow>
                 <TableCell>Number</TableCell>
                 <TableCell align="right">Move</TableCell>
-                <TableCell align="right">Player</TableCell>
-                <TableCell align="right">Created At</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -41,8 +39,6 @@ class Moves extends React.Component {
                 <TableRow key={move.id}>
                   <TableCell component="th" scope="row">{move.number}</TableCell>
                   <TableCell align="right">{move.message}</TableCell>
-                  <TableCell align="right">{move.player}</TableCell>
-                  <TableCell align="right">{getDate(move, "createdAt")}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -50,8 +46,7 @@ class Moves extends React.Component {
       )
     } else {
       return(<div>Loading...</div>)
-    }
-;
+    };
   }
 }
 export default withStyles(styles)(Moves);

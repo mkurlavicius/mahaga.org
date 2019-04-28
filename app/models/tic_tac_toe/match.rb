@@ -66,6 +66,14 @@ module TicTacToe
     def starts
       self.started_by || Player.computer
     end
+
+    def y_coordinates
+      self.reversed_axis
+    end
+
+    def x_coordinates
+      self.axis
+    end
   
     def starts=(string)
       if string.match(Player.to_regexp)

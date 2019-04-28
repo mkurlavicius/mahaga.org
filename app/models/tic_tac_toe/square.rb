@@ -45,6 +45,16 @@ module TicTacToe
     def disabled
       match.finished? || !status_nobody?
     end
+
+    def color
+      {
+        nobody:   'default',
+        human:    'primary',
+        computer: 'secondary',
+        opponent: 'secondary'
+      }[self.status.to_sym]
+    end
+
   
     def to_coordinate
       Coordinate.new(self)

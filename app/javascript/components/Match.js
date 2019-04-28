@@ -21,9 +21,9 @@ import { connect }     from 'react-redux';
 import { getMoves }    from '../actions/moveActions';
 import PropTypes       from 'prop-types';
 
-import Board     from './Board'
-import MatchCard from './MatchCard'
-import MovesCard from './MovesCard'
+import Board     from './board/Board'
+import MatchCard from './match/MatchCard'
+import MovesCard from './move/MovesCard'
 
 import { getDate }  from './Utils';
 

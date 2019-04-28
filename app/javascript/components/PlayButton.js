@@ -38,7 +38,6 @@ class PlayButton extends React.Component {
 
   handleOnClick(event) {
     this.props.onSubmit(event.target.name, event.target.value)
-    console.log("asdknhswugdfhubg")
     this.setState({ clicked: true });
   };
 

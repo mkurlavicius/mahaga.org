@@ -6,9 +6,9 @@ import { createStore, applyMiddleware }   from "redux"
 
 // Material 
 // App 
-import MainPage     from './MainPage'
-import { loadCSS }  from 'fg-loadcss'
+import MainPage     from './base/MainPage'
 import store        from '../store';
+import { loadCSS }  from 'fg-loadcss'
 
 
 class GameBase extends React.Component {
@@ -33,4 +33,4 @@ class GameBase extends React.Component {
   }
 }
 
-export default GameBase
+export default GameBase;

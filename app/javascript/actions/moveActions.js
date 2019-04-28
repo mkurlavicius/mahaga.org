@@ -4,37 +4,30 @@ import { GET_MOVES, GET_MOVE, CREATE_MOVE } from './types';
 import { gameBaseServer }                   from './server';
 import { getMatch }                         from './matchActions'
 
-export const getMoves = (gameId, matchId) => (dispatch) => {
-  console.log("Getting all the moves")
-  dispatch(getMatch(gameId, matchId));
-  return axios.get(`${gameBaseServer.host}/games/${gameId}/matches/${matchId}/moves.json`)
+export const getMoves = (gameId, matchId, withMatch = true) => (dispatch) => {
+  withMatch ? dispatch(getMatch(gameId, matchId)) : null
+
+  return axios.get(`/games/${gameId}/matches/${matchId}/moves.json`)
     .then(response => dispatch({
-      type: GET_MOVES,
+      type:    GET_MOVES,
       payload: response.data
-    })) 
+    }));
 }
 
-export const getMove = (gameId, matchId, moveId) => (dispatch) => {
-  dispatch(getMatch(gameId, matchId));
-  return axios.get(`${gameBaseServer.host}/games/${gameId}/matches/${matchId}/moves/${moveId}./json`)
+export const getMove = (gameId, matchId, moveId, withMatch = true) => (dispatch) => {
+  withMatch ? dispatch(getMatch(gameId, matchId)) : null
+
+  return axios.get(`/games/${gameId}/matches/${matchId}/moves/${moveId}./json`)
     .then(response => dispatch({
-      type: GET_MOVE,
+      type:    GET_MOVE,
       payload: response.data
-    }))
+    }));
 }
 
-export const createMove = (size, starts, gameId) => (dispatch) => {
-  dispatch(getMatch(gameId, matchId))
-
-  const move = { size: size, starts: starts }  
-  return axios.post(`${gameBaseServer.host}/games/${gameId}/matches/${matchId}/moves.json`, { match })
-    .then(function(response) {
-      return dispatch({
-        type: CREATE_MOVE,
-        payload: response.data
-      });
-    });
-    // const redirect = `/games/${game.id}/matches/${res.data.id}.html`
-    // this.props.history.push(redirect);
-  
+export const createMove = (gameId, matchId, move) => (dispatch) => {
+  return axios.post(`/games/${gameId}/matches/${matchId}/moves.json`, { move })
+    .then(response => dispatch({
+      type:    CREATE_MOVE,
+      payload: response.data
+    }));
 }

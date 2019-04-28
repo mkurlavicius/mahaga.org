@@ -7,13 +7,9 @@ import red            from '@material-ui/core/colors/red';
 import Grid           from '@material-ui/core/Grid';
 
 // App
-import Matches   from './Matches'
-import MatchForm from './MatchForm' 
-import Square    from './Square'
-import Moves     from './Moves'
-import BoardLine from './BoardLine'
-
-import { axis  } from './Utils'
+import Loader             from '../base/Loader'
+import Square             from '../square/Square'
+import { getSquareByXY  } from '../Utils'
 
 const styles = theme => ({
   card: {
@@ -43,15 +39,22 @@ const styles = theme => ({
 
 class Board extends React.Component {
 
-  render() {
-    const { game, match, gameBase, matchData } = this.props
-    const yCoordinates = axis(match.size).reversed();
 
-    return((this.props.match) ? 
-      (yCoordinates.map((yCoordinate, index) => (
-        <BoardLine key={`board-line-${index}`} match={match} game={game} gameBase={gameBase} matchData={matchData} horizontal={yCoordinate}/>
+
+  render() {
+    const { gameBase, game, match, squares, matchData } = this.props
+    return(
+      (match) ? 
+      (match.yCoordinates.map((yCoordinate) => (
+        <Grid container key={`board-line-${yCoordinate}`} alignItems="center" direction="row" justify="center">
+          {match.xCoordinates.map((xCoordinate) => ( 
+            this.squareItem(xCoordinate, yCoordinate, squares, match, game, gameBase, matchData)
+          ))}
+        </Grid>
       ))) : 
-      (<div>Loading...</div>)    
+      (<Grid container key={'with-loader'} alignItems="center" direction="row" justify="center">
+        <Loader/>        
+      </Grid>)    
     );
   }
 }

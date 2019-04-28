@@ -1,7 +1,7 @@
+// React
 import React from 'react';
 
-
-import Grid           from '@material-ui/core/Grid';
+// Material
 import Card           from '@material-ui/core/Card';
 import CardHeader     from '@material-ui/core/CardHeader';
 import CardContent    from '@material-ui/core/CardContent';
@@ -16,19 +16,14 @@ import ShareIcon      from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon   from '@material-ui/icons/MoreVert'
 
-
-import { connect }     from 'react-redux';
-import { getMoves }    from '../actions/moveActions';
-import PropTypes       from 'prop-types';
-
-import Board from './Board'
-// import Moves from './Moves'
-
-import { getDate }  from './Utils';
+// App
+import Board        from '../board/Board';
+import Loader       from '../base/Loader';
+import { getDate }  from '../Utils';
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    // maxWidth: 400,
   },
   media: {
     height: 0,
@@ -66,41 +61,38 @@ class MatchCard extends React.Component {
   }
 
   render() {
-    const { classes, game, match, matchData } = this.props;
-    if(match.id && game.id && classes) {
-      return(
+    const { classes, matchData, gameBase, game, match, squares } = this.props;
+    console.log(matchData)
+    return(
+      (match.id && game.id && classes) ? 
+      ( 
         <Card className={classes.card}>
+
           <CardHeader
-            avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
-                R
-              </Avatar>
-            }
-            action={
-              <IconButton>
-              <MoreVertIcon />
-              </IconButton>
-            }
+            avatar={<Avatar aria-label="Recipe" className={classes.avatar}>M</Avatar>}
+            action={<IconButton><MoreVertIcon/></IconButton>}
             title={this.matchTitle()}
             // title="Shrimp and Chorizo Paella"
-            subheader={`Started: ${getDate(match, "createdAt")}`}
-          />
+            subheader={`Started: ${getDate(match, "createdAt")}`}/>
 
-        <CardContent>
-          <Board match={match} game={game} matchData={matchData}/>
-        </CardContent>
+          <CardContent>
+            <Board 
+              squares={squares} 
+              match={match} 
+              game={game} 
+              gamebase={gameBase} 
+              matchData={matchData}/>
+          </CardContent>
 
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites"><FavoriteIcon /></IconButton>
-          <IconButton aria-label="Share"><ShareIcon /></IconButton>
-        </CardActions>
-      </Card>
-      );
-    } else {
-      return(
-        <div>Loading....</div>
-      );
-    }
+          <CardActions className={classes.actions} disableActionSpacing>
+            <IconButton aria-label="Add to favorites"><FavoriteIcon /></IconButton>
+            <IconButton aria-label="Share"><ShareIcon /></IconButton>
+          </CardActions>
+
+        </Card>
+      ) : 
+      (<Loader/>)
+    )
   }
 }
 

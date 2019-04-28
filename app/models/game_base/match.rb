@@ -64,7 +64,7 @@ module GameBase
 
 
     def axis
-      (1..self.size)
+      (1..self.size).to_a
     end
   
     def reversed_axis

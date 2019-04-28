@@ -34,7 +34,7 @@ module TicTacToe
         Player.human => {
           End.win     => "Your move is #{self}. Congratulations, you have won!!! ",
           End.draw    => "Player moves #{self}. No winning moves left. No one has won.",
-          End.nothing => "Player moves #{self}"
+          End.nothing => "Player moves #{self}."
         },
         Player.computer => {
           End.win     => "Computer responds #{self} and wins. Game is finished.",

@@ -13,7 +13,7 @@ module TicTacToe
       @squares       = match.squares.reload.all.to_a
       @size          = match.size
       @axis          = match.axis
-      @reversed_axis = @axis.to_a.reverse
+      @reversed_axis = match.reversed_axis
     end
     
     def prepare

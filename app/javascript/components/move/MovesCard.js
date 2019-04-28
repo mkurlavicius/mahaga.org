@@ -18,14 +18,14 @@ import MoreVertIcon   from '@material-ui/icons/MoreVert'
 
 import PropTypes       from 'prop-types';
 
-import Board from './Board'
-import Moves from './Moves'
+import Board from '../board/Board'
+import Moves from '../move/Moves'
 
-import { getDate }  from './Utils';
+import { getDate }  from '../Utils';
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    // maxWidth: 400,
   },
   media: {
     height: 0,
@@ -70,27 +70,27 @@ class MovesCard extends React.Component {
           <CardHeader
             avatar={
               <Avatar aria-label="Recipe" className={classes.avatar}>
-                Mov
+                {moves.length}
               </Avatar>
             }
-            action={
-              <IconButton>
-              <MoreVertIcon />
-              </IconButton>
-            }
+            // action={
+            //   <IconButton>
+            //   <MoreVertIcon />
+            //   </IconButton>
+            // }
             title={this.movesTitle()}
             // title="Shrimp and Chorizo Paella"
-            subheader={`Started: ${getDate(match, "createdAt")}`}
+            // subheader={`Started: ${getDate(match, "createdAt")}`}
           />
 
         <CardContent>
           <Moves moves={moves} match={match} game={game} matchData={matchData}/>
         </CardContent>
-
+{/* 
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites"><FavoriteIcon /></IconButton>
           <IconButton aria-label="Share"><ShareIcon /></IconButton>
-        </CardActions>
+        </CardActions> */}
       </Card>
       );
     } else {

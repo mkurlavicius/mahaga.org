@@ -10,6 +10,8 @@ json.second_player_type match.second_player_type
 json.winner             match.winner  
 json.type               match.type  
 json.game_id            match.game_id  
+json.y_coordinates      match.y_coordinates
+json.x_coordinates      match.x_coordinates
 json.first_player_id    match.first_player_id  
 json.second_player_id   match.second_player_id
 json.squares do |json|

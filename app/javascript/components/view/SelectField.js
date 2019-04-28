@@ -44,8 +44,6 @@ class SelectField extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.name);
-    console.log(event.target.value);
     this.props.onInputChange(event.target.name, event.target.value);
   };
 

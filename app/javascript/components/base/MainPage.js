@@ -8,13 +8,15 @@ import CssBaseline    from '@material-ui/core/CssBaseline';
 import Grid           from '@material-ui/core/Grid';
 import Typography     from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Link           from '@material-ui/core/Link';
 
 // App
 import TopBar    from './TopBar'
 import HeroArea  from './HeroArea'
-import GameCards from './GameCards'
-import Game      from './Game'
-import Match     from './Match'
+import Loader    from '../base/Loader'
+import Games     from '../game/Games'
+import Game      from '../game/Game'
+import Match     from '../match/Match'
 
 const styles = theme => ({
   appBar: {
@@ -58,45 +60,43 @@ const styles = theme => ({
     flexGrow: 1,
   },
   footer: {
+    // background: 'rgb(66,80,174)',
+    // background: 'linear-gradient(0deg, rgba(66,80,174,1) 0%, rgba(255,255,255,1) 43%)',
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,
   },
 });
 
 class MainPage extends React.Component  {
-  constructor(props){
-    super(props)  
-    this.state = { 
-      error:     null,
-      isLoaded:  false,
-      gameBase:  this.props.gameBase,
-      showGames: this.props.showGames,
-      showHero:  this.props.showHero,
-      showGame:  this.props.showGame,
-      showMatch: this.props.showMatch,
-      gameId:    this.props.gameId,
-      matchData: this.props.matchData,
-    }
-  }
 
   render() {
-    const { classes, gameBase } = this.props
-    const { showGames, showHero, showGame, showMatch, matchData, gameId } = this.state;
+    const { classes, gameBase, showGames, showHero, showGame, showMatch, matchData } = this.props;
 
     return (
       <React.Fragment>
         <CssBaseline/>
-        <TopBar/>
-        { showHero ? (<HeroArea gameBase={gameBase}/>) : ('') }
+        <TopBar gameBase={gameBase}/>
 
+        { showHero ? (<HeroArea gameBase={gameBase}/>) : (<React.Fragment/>) }
           <div className={classNames(classes.layout, classes.cardGrid)}>
             <Grid container spacing={40}>
-              { showGames ? (<GameCards  gameBase={this.state.gameBase} matchData={this.state.matchData}                 />) : (<div></div>) }
-              { showGame  ? (<Game       gameBase={this.state.gameBase} matchData={this.state.matchData} gameId={gameId} />) : (<div></div>) }
-              { showMatch ? (<Match      gameBase={this.state.gameBase} matchData={this.state.matchData}                 />) : (<div></div>) }
+              {((showGames) ? (<Games gameBase={gameBase} matchData={matchData}/>) : 
+               ((showGame)  ? (<Game  gameBase={gameBase} matchData={matchData}/>) : 
+               ((showMatch) ? (<Match gameBase={gameBase} matchData={matchData}/>) : (<Loader/>))))}
             </Grid>
           </div>
 
+          <footer className={classes.footer}>
+            <Typography variant="h6" align="center" gutterBottom>
+              Created By -
+              <Link href='mailto:mkurlavicius@gmail.com'>
+                Mindaugas Kurlavičius
+              </Link>
+            </Typography>
+            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+              Something here to give the footer a purpose!
+            </Typography>
+          </footer>
       </React.Fragment>
     )
   }

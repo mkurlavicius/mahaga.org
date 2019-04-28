@@ -59,21 +59,10 @@ const styles = theme => ({
   },
 });
 
-class GameBaseHero extends React.Component  {
-    constructor(props){
-      super(props)
-      this.state = {
-        wikiToken: '45abdee7fa53757f67eb592313e8cdfc36d7442',
-        gameBase: null,
-        expanded: false,
-        game: null
-      }
-  }
+class HeroSection extends React.Component  {
 
   render() {
-    const { classes }  = this.props
-    const { gameBase } = this.props
-
+    const { classes, gameBase }  = this.props
     return(
       <div className={classes.heroUnit}>
         <div className={classes.heroContent}>
@@ -106,4 +95,4 @@ class GameBaseHero extends React.Component  {
   }
 }
 
-export default withStyles(styles)(GameBaseHero);
+export default withStyles(styles)(HeroSection);

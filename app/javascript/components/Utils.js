@@ -6,7 +6,9 @@ export const getDate = (object, field) => {
       return Intl.DateTimeFormat('en-GB', {
         year:  'numeric',
         month: 'long',
-        day:   'numeric'
+        day:   'numeric',
+        hour:  'numeric',
+        minute: 'numeric'
       }).format(new Date(object[field]))
     } else {
       console.log("No date provided in getDate function")

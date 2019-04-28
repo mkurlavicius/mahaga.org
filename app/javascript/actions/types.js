@@ -11,3 +11,6 @@ export const CREATE_MATCH = 'CREATE_MATCH';
 export const GET_MOVES    = 'GET_MOVES';
 export const GET_MOVE     = 'GET_MOVE';
 export const CREATE_MOVE  = 'CREATE_MOVE'
+
+// Squares
+export const GET_SQUARES = 'GET_SQUARES';

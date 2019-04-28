@@ -1,5 +1,9 @@
+// React
 import React              from 'react';
 import PropTypes          from 'prop-types';
+import { NavLink }        from 'react-router-dom';
+
+// Material
 import AppBar             from '@material-ui/core/AppBar';
 import Toolbar            from '@material-ui/core/Toolbar';
 import IconButton         from '@material-ui/core/IconButton';
@@ -16,7 +20,7 @@ import AccountCircle      from '@material-ui/icons/AccountCircle';
 import MailIcon           from '@material-ui/icons/Mail';
 import NotificationsIcon  from '@material-ui/icons/Notifications';
 import MoreIcon           from '@material-ui/icons/MoreVert';
-import { NavLink }        from 'react-router-dom';
+
 
 const styles = theme => ({
   root: {
@@ -116,9 +120,9 @@ class TopBar extends React.Component {
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
-    const { classes } = this.props;
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const { classes, gameBase }            = this.props;
+    const isMenuOpen                       = Boolean(anchorEl);
+    const isMobileMenuOpen                 = Boolean(mobileMoreAnchorEl);
 
     const renderMenu = (
       <Menu
@@ -126,8 +130,8 @@ class TopBar extends React.Component {
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
-        onClose={this.handleMenuClose}
-      >
+        onClose={this.handleMenuClose}>
+
         <MenuItem onClick={this.handleMenuClose}>Home</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>Tic Tac Toe</MenuItem>
       </Menu>
@@ -139,30 +143,25 @@ class TopBar extends React.Component {
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}
-      >
+        onClose={this.handleMenuClose}>
+
         <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
+          <IconButton color="inherit"><Badge badgeContent={4} color="secondary"><MailIcon /></Badge>
           </IconButton>
           <p>Messages</p>
         </MenuItem>
+
         <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
-            <Badge badgeContent={11} color="secondary">
-              <NotificationsIcon />
-            </Badge>
+          <IconButton color="inherit"><Badge badgeContent={11} color="secondary"><NotificationsIcon /></Badge>
           </IconButton>
           <p>Notifications</p>
         </MenuItem>
+
         <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
+          <IconButton color="inherit"><AccountCircle /></IconButton>
           <p>Profile</p>
         </MenuItem>
+
       </Menu>
     );
 
@@ -170,56 +169,31 @@ class TopBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-              <MenuIcon />
-            </IconButton>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer"><MenuIcon /></IconButton>
             
             <NavLink to={`/`}>
-              <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                Home
-              </Typography>
+              <Typography className={classes.title} variant="h6" color="inherit" noWrap>Home</Typography>
             </NavLink> 
 
             <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
+              <div className={classes.searchIcon}><SearchIcon /></div>
+              <InputBase placeholder="Search…" classes={{ root: classes.inputRoot, input: classes.inputInput }}/>
             </div>
+
             <div className={classes.grow} />
+
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+              <IconButton color="inherit"><Badge badgeContent={4}  color="secondary"><MailIcon /></Badge></IconButton>
+              <IconButton color="inherit"><Badge badgeContent={17} color="secondary"><NotificationsIcon /></Badge></IconButton>
+              <IconButton aria-owns={isMenuOpen ? 'material-appbar' : undefined} aria-haspopup="true" onClick={this.handleProfileMenuOpen} color="inherit"><AccountCircle /></IconButton>
             </div>
+
             <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                <MoreIcon />
-              </IconButton>
+              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit"><MoreIcon /></IconButton>
             </div>
           </Toolbar>
         </AppBar>
+
         {renderMenu}
         {renderMobileMenu}
       </div>
