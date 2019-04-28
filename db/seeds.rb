@@ -9,32 +9,27 @@
 @system = GameBase::SystemProperty.create(
   main_name:        'Mahaga',
   main_caption:     'THE LADDER of CLASSICAL GAMES',
-  main_description: 'Collection of games, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est '
+  main_description: 'Collection of classical games like TicTacTao, Sudoku, Chess, Draughts, Solitaire and many more to come as the idea expands. 
+  Playable against a computer or human opponent(s) with the same level of experience. '
 )
 
 @system.games.create(
-  label:           'Never Lucky TicTacToe',
+  label:           'TicTacToe',
   name:            'TicTacToe',
   wikipedia_query: 'Tic-tac-toe',
-  description:     'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-)
-
-@system.games.create(
-  label:           'Sudoku',
-  name:            'Sudoku',
-  wikipedia_query: 'Sudoku',
-  description:     'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+  description:     'Tic-tac-toe, noughts and crosses, or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.'
 )
 
 
 game = GameBase::Game.find(1)
+
+
 game.settings = {
   sizeOptions: [
     [3, "3x3"],
     [4, "4x4"],
     [5, "5x5"],
     [6, "6x6"],
-    [7, "7x7"]
   ],
   startsOptions: [
     ["computer", "Computer"],
