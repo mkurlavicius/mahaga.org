@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
 
 export const gameBaseServer = {
   production:  'https://www.mahaga.org',
@@ -8,4 +8,4 @@ export const gameBaseServer = {
   host:        'http://localhost:3000'
 }
 
-axios.defaults.baseUrl = gameBaseServer.host;
+axios.defaults.baseUrl = gameBaseServer.production;
