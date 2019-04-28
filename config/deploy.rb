@@ -2,6 +2,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
+default_run_options[:shell] = '/bin/zsh'
+
 server 'mahaga.org', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,    'git@github.com:mkurlavicius/mahaga.org.git'
