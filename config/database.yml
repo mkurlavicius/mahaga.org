@@ -80,5 +80,5 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['RAILS_TICTAC_DATABASE_NAME'] %>
-  password: <%= ENV['RAILS_TICTAC_DATABASE_PASSWORD'] %>
+  database: <%= ENV['RAILS_GAMEBASE_DB_NAME'] %>
+  password: <%= ENV['RAILS_GAMEBASE_DB_PASSWORD'] %>
