@@ -25,6 +25,6 @@ local:
 #   container: your_container_name
 
 # mirror:
-#   service: Mirror
+#   service: Mirr
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
