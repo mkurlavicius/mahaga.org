@@ -15,6 +15,8 @@ set :pty,         true
 set :stage,       :production
 set :deploy_to,   "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 
+append :linked_dirs, "public/uploads"
+
 set :passenger_restart_with_sudo, false
 set :passenger_restart_with_touch, true
 
