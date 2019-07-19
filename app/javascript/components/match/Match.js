@@ -110,7 +110,7 @@ class Match extends React.Component {
     return(
       (game.id && match.id && moves ) ?
       (
-        <Grid container direction="row" justify="center" spacing={40}>
+        <Grid container direction="row" justify="center" spacing={10}>
           <Grid item key={'match-card'} xs={12} sm={12} md={6} lg={6}>
             <Card className={classes.card}>
               <CardHeader
@@ -145,7 +145,7 @@ class Match extends React.Component {
                 }  
               </CardContent>
 
-              <CardActions className={classes.actions} disableActionSpacing>
+              <CardActions className={classes.actions} disableSpacing>
                 <IconButton aria-label="Add to favorites"><FavoriteIcon /></IconButton>
                 <IconButton aria-label="Share"><ShareIcon /></IconButton>
               </CardActions>

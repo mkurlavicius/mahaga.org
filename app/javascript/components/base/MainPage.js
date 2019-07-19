@@ -23,7 +23,7 @@ const styles = theme => ({
     position: 'relative',
   },
   icon: {
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing(2),
   },
   heroUnit: {
     backgroundColor: theme.palette.background.paper,
@@ -31,22 +31,22 @@ const styles = theme => ({
   heroContent: {
     maxWidth: 600,
     margin: '0 auto',
-    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+    padding: `${theme.spacing(8)}px 0 ${theme.spacing(6)}px`,
   },
   heroButtons: {
-    marginTop: theme.spacing.unit * 4,
+    marginTop: theme.spacing(4),
   },
   layout: {
     width: 'auto',
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3, [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3), [theme.breakpoints.up(1100 + theme.spacing(6))]: {
       width: 1100,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
   },
   cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`,
+    padding: `${theme.spacing(8)}px 0`,
   },
   card: {
     height: '100%',
@@ -63,7 +63,7 @@ const styles = theme => ({
     // background: 'rgb(66,80,174)',
     // background: 'linear-gradient(0deg, rgba(66,80,174,1) 0%, rgba(255,255,255,1) 43%)',
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing.unit * 6,
+    padding: theme.spacing(6),
   },
 });
 
@@ -79,7 +79,7 @@ class MainPage extends React.Component  {
 
         { showHero ? (<HeroArea gameBase={gameBase}/>) : (<React.Fragment/>) }
           <div className={classNames(classes.layout, classes.cardGrid)}>
-            <Grid container spacing={40}>
+            <Grid container spacing={10}>
               {((showGames) ? (<Games gameBase={gameBase} matchData={matchData}/>) : 
                ((showGame)  ? (<Game  gameBase={gameBase} matchData={matchData}/>) : 
                ((showMatch) ? (<Match gameBase={gameBase} matchData={matchData}/>) : (<Loader/>))))}

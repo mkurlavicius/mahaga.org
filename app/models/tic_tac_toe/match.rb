@@ -11,6 +11,7 @@ module TicTacToe
     has_many :squares,         class_name: "TicTacToe::Square", foreign_key: "match_id", dependent: :destroy
     has_many :moves,           class_name: "TicTacToe::Move",   foreign_key: "match_id", dependent: :destroy
     
+    before_create :set_starting_player
     after_create :prepare_board, :computers_move
     delegate :human_won?, :computer_won?, :has_ended_no_winner?, :update_winning_squares, to: :board
     
@@ -75,15 +76,23 @@ module TicTacToe
       self.axis
     end
   
-    def starts=(string)
-      if string.match(Player.to_regexp)
-        self.started_by = Player.all[string]
-        self.goes       = Player.all[string]
-        self.first_player_type  = self.started_by
-        self.second_player_type = self.versus
-      else 
-        raise 'The game can only be started by computer or player'
-      end
+    # def starts=(string)
+    #   if string.match(Player.to_regexp)
+    #     self.started_by = Player.all[string]
+    #     self.goes       = Player.all[string]
+    #     self.first_player_type  = self.started_by
+    #     self.second_player_type = self.versus
+    #   else 
+    #     raise 'The game can only be started by computer or player'
+    #   end
+    # end
+
+    def set_starting_player
+      starting_player         = [Player.human, Player.computer].sample
+      self.started_by         = starting_player
+      self.goes               = starting_player
+      self.first_player_type  = starting_player
+      self.second_player_type = self.versus
     end
   
     def versus

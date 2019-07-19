@@ -45,7 +45,7 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.fetch(:match, {}).permit(:starts, :size).merge({
+      params.fetch(:match, {}).permit(:size).merge({
         :game_id          => @game.id,
         :first_player_id  => current_user.id
       })

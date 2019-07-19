@@ -5,11 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "chrome",
+      "name": "Rails server",
+      "type": "Ruby",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "program": "${workspaceRoot}/bin/rails",
+      "args": [
+        "server"
+      ]
     }
   ]
 }

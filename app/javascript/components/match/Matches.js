@@ -31,7 +31,7 @@ import Loader      from '../base/Loader'
 const styles = theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
     overflowX: 'auto',
   },
   table: {
@@ -82,7 +82,7 @@ class Matches extends React.Component {
           {
             (matches) ? 
             (
-              <Table padding="dense" className={classes.table}>
+              <Table className={classes.table}>
 
                 <TableHead>
                   <TableRow>
@@ -112,7 +112,7 @@ class Matches extends React.Component {
           }
         </CardContent>
 
-        <CardActions className={classes.actions} disableActionSpacing>
+        <CardActions className={classes.actions} disableSpacing>
           <IconButton aria-label="Add to favorites"><FavoriteIcon /></IconButton>
           <IconButton aria-label="Share"><ShareIcon /></IconButton>
         </CardActions>

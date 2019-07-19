@@ -25,7 +25,8 @@ import MoreVertIcon   from '@material-ui/icons/MoreVert'
 // APP
 import SelectField from '../view/SelectField'
 import PlayButton  from '../PlayButton';
-import { getDate }  from '../Utils';
+import { getDate } from '../Utils';
+import Loader      from '../base/Loader';
 
 
 
@@ -62,16 +63,15 @@ class MatchForm extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleClick  = this.handleClick.bind(this)
     this.state = {
-      matchSize: 3,
-      matchStarts: "human"
+      matchSize: 3
     }
   }
 
   handleClick() {
     const { game }  = this.props;
-    const { matchSize, matchStarts } = this.state
+    const { matchSize } = this.state
 
-    this.props.createMatch(game.id, { size: matchSize, starts: matchStarts }).then(response => {
+    this.props.createMatch(game.id, { size: matchSize }).then(response => {
         this.props.history.push(`/games/${game.id}/matches/${response.payload.id}.html`);
       } 
     )
@@ -88,52 +88,52 @@ class MatchForm extends React.Component {
       (
         <Card className={classes.card}>
 
-        <CardHeader
-          avatar={<Avatar aria-label="Recipe" className={classes.avatar}>P</Avatar>}
-          action={<IconButton><MoreVertIcon/></IconButton>}
-          title={'Play a new game'}
-          // title="Shrimp and Chorizo Paella"
-          subheader={`Started: ${getDate(game, "createdAt")}`}/>
+          <CardHeader
+            //avatar={<Avatar aria-label="Recipe" className={classes.avatar}>P</Avatar>}
+            //action={<IconButton><MoreVertIcon/></IconButton>}
+            title={'Play a new game'}
+            //subheader={`Started: ${getDate(game, "createdAt")}`}
+          />
 
-        <CardContent>
-          <FormControl fullWidth={true} required={true} key='size'>
-            <SelectField 
-              id="matchSize" 
-              name="matchSize" 
-              label="What is the size?" 
-              value={this.state.matchSize} 
-              selectOptions={game.settings.sizeOptions} 
-              onInputChange={this.handleChange}/>
-          </FormControl>
+          <CardContent>
+            <FormControl fullWidth={true} required={true} key='size'>
+              <SelectField 
+                id="matchSize" 
+                name="matchSize" 
+                label="Size of the board?" 
+                value={this.state.matchSize} 
+                selectOptions={game.settings.sizeOptions} 
+                onInputChange={this.handleChange}/>
+            </FormControl>
 
-          <FormControl fullWidth={true} required={true} key='starts'>
-            <SelectField 
-              id="matchStarts" 
-              name="matchStarts" 
-              label="Who starts the game?" 
-              value={this.state.matchStarts} 
-              selectOptions={game.settings.startsOptions} 
-              onInputChange={this.handleChange}/>
-          </FormControl>
+            {/* <FormControl fullWidth={true} required={true} key='starts'>
+              <SelectField 
+                id="matchStarts" 
+                name="matchStarts" 
+                label="Who starts the game?" 
+                value={this.state.matchStarts} 
+                selectOptions={game.settings.startsOptions} 
+                onInputChange={this.handleChange}/>
+            </FormControl> */}
 
-          <FormControl fullWidth={true} key='play'>
-            <PlayButton 
-              id="play"
-              name="play" 
-              label="Play" 
-              onSubmit={this.handleClick}>
-            </PlayButton>
-          </FormControl>
-        </CardContent>
+            <FormControl fullWidth={true} required={true} key='play'>
+              <PlayButton 
+                id="play"
+                name="play" 
+                label="Play" 
+                onSubmit={this.handleClick}>
+              </PlayButton>
+            </FormControl>
 
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites"><FavoriteIcon /></IconButton>
-          <IconButton aria-label="Share"><ShareIcon /></IconButton>
-        </CardActions>
+          </CardContent>
 
-      </Card>
-      ) : 
-      ( <div>Loading</div> )
+          {/* <CardActions className={classes.actions} disableSpacing>
+            <IconButton aria-label="Add to favorites"><FavoriteIcon /></IconButton>
+            <IconButton aria-label="Share"><ShareIcon /></IconButton>
+          </CardActions> */}
+
+        </Card>) : 
+      (<Loader/>)
     );
   }
 }

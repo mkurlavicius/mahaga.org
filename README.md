@@ -23,4 +23,6 @@ Things you may want to cover:
 
 * ...
 
-1. Paveiksliukas bg
+1. Fix Styles
+2. Links to linkedin, skype, mail
+3. Player vs Player 

@@ -20,7 +20,7 @@ class GameBase extends React.Component {
     loadCSS('https://use.fontawesome.com/releases/v5.1.0/css/all.css', document.querySelector('#insertion-point-jss'));
   }
 
-  render () {
+  render() {
     return(
       <Provider store={store}>
         <Router>

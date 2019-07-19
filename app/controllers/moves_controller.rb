@@ -28,6 +28,8 @@ class MovesController < ApplicationController
     respond_to do |format|
       format.json do
         if @move.save
+          serialized_data = ActiveModelSerializers::Adapter::Json.new(MoveSerializer.new(@move)).serializable_hash
+          MatchChannel.broadcast_to(@move.match, serialized_data)
           render :show, status: :created, location: game_match_move_path(@game, @match, @move)
         else
           render json: @move.errors, status: :unprocessable_entity 

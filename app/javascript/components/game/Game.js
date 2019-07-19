@@ -27,7 +27,7 @@ class Game extends React.Component {
     const { game, matches, matchData, gameBase } = this.props;
 
     return(
-      <Grid container direction="row" justify="center" spacing={40}>
+      <Grid container direction="row" justify="center" spacing={10}>
         <Grid item key={`match`} xs={12} sm={12} md={6} lg={6}>
           { 
             (game.settings) ? 

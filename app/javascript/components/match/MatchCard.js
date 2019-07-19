@@ -84,7 +84,7 @@ class MatchCard extends React.Component {
               matchData={matchData}/>
           </CardContent>
 
-          <CardActions className={classes.actions} disableActionSpacing>
+          <CardActions className={classes.actions} disableSpacing>
             <IconButton aria-label="Add to favorites"><FavoriteIcon /></IconButton>
             <IconButton aria-label="Share"><ShareIcon /></IconButton>
           </CardActions>

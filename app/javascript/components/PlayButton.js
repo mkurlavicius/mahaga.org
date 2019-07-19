@@ -12,18 +12,10 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import { FormControlLabel } from '@material-ui/core';
 
 const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
-  leftIcon: {
-    marginRight: theme.spacing.unit,
-  },
-  rightIcon: {
-    marginLeft: theme.spacing.unit,
-  },
-  iconSmall: {
-    fontSize: 20,
-  },
+  button:    { margin:      theme.spacing(1) },
+  leftIcon:  { marginRight: theme.spacing(1) },
+  rightIcon: { marginLeft:  theme.spacing(1) },
+  iconSmall: { fontSize: 20 }
 });
 
 class PlayButton extends React.Component {
@@ -44,8 +36,14 @@ class PlayButton extends React.Component {
   render() {
     const { classes, label } = this.props;
     return(
-      <Button name="play" variant="contained" color="primary" size="large" className={classes.button} onClick={this.handleOnClick}>
-        {label}<PlayArrowIcon className={classes.rightIcon}/>
+      <Button 
+        name="play" 
+        variant="contained" 
+        color="primary" 
+        size="large" 
+        className={classes.button} 
+        onClick={this.handleOnClick}>
+          {label}<PlayArrowIcon className={classes.rightIcon}/>
       </Button>
     )
   }
