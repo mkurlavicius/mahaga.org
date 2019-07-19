@@ -1,14 +1,13 @@
-development:
+default: &default
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/gamebase/development" } %>
-  channel_prefix: gamebase
+  url:  <%= ENV.fetch("REDIS_#{Rails.env}_URL") { "redis://localhost:6379/redis/#{Rails.env}/cable" } %>
+  channel_prefix: mahaga
+
+development:
+  <<: *default
 
 test:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/gamebase/test" } %>
-  channel_prefix: gamebase
+  <<: *default
 
 production:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/gamebase/production" } %>
-  channel_prefix: gamebase
+  <<: *default
