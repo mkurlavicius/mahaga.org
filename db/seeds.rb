@@ -42,7 +42,7 @@
 
 game = GameBase::Game.first
 a.picture.attach(
-  io: File.open("/Users/mindaugas/Desktop/good.png"),
+  io: File.open("/home/mindaugas/good.png"),
   filename: "good.png"
 )
 
