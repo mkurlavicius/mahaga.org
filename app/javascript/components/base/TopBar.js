@@ -169,16 +169,16 @@ class TopBar extends React.Component {
               <Typography className={classes.title} variant="h6" color="inherit" noWrap>Home</Typography>
             </NavLink> 
 
-            <div className={classes.search}>
+            {/* <div className={classes.search}>
               <div className={classes.searchIcon}><SearchIcon /></div>
               <InputBase placeholder="Search…" classes={{ root: classes.inputRoot, input: classes.inputInput }}/>
-            </div>
+            </div> */}
 
             <div className={classes.grow} />
 
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit"><Badge badgeContent={4}  color="secondary"><MailIcon /></Badge></IconButton>
-              <IconButton color="inherit"><Badge badgeContent={17} color="secondary"><NotificationsIcon /></Badge></IconButton>
+              {/* <IconButton color="inherit"><Badge badgeContent={4}  color="secondary"><MailIcon /></Badge></IconButton> */}
+              {/* <IconButton color="inherit"><Badge badgeContent={17} color="secondary"><NotificationsIcon /></Badge></IconButton> */}
               <IconButton aria-owns={isMenuOpen ? 'material-appbar' : undefined} aria-haspopup="true" onClick={this.handleProfileMenuOpen} color="inherit"><AccountCircle /></IconButton>
             </div>
 
