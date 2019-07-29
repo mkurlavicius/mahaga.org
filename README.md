@@ -1,17 +1,18 @@
-# Tic Tac Toe
+# Mahaga.org
 
-- [x] The Game Itself
+- [x] The Project Itself
     
     * [Link To The App](https://mahaga.org)
     
 - [x] Setup
     
-    The project is made using: 
+    It is made using: 
     
-    * "Ruby on Rails" framework. 
+    * "Ruby on Rails" web framework for REST'full WEB services
+    * "React.js" for user interface.
     * Postgres database.
     * Redis for cache.
-    * Deployed on Uuntu with Nginx web server with Passenger extension.
+    * Deployed on Ubuntu, Nginx web server with Passenger extension.
 
     
 - [x] Documentation
@@ -44,5 +45,5 @@
     
     * Moves@create - Hidden form behind every button to create a new move on click and redirect back
     to Games@show action.
-    
+
   
